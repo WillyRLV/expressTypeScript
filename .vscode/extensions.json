@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+      "dbaeumer.vscode-eslint",          // ESLint para linting
+      "esbenp.prettier-vscode",          // Prettier para formateo
+      "formulahendry.auto-rename-tag",   // Auto renombrar tags HTML/JSX
+      "pkief.material-icon-theme",       // Mejores iconos
+      "streetsidesoftware.code-spell-checker", // Revisor de ortografía
+      "dsznajder.es7-react-js-snippets", // Snippets para React
+      "christian-kohler.path-intellisense", // Autocompletado de rutas
+      "bradlc.vscode-tailwindcss"        // Soporte para Tailwind si lo usas
+    ],
+    // Extensiones que no se recomiendan para el proyecto
+    "unwantedRecommendations": [
+      "hookyqr.beautify",  // Si prefieres Prettier sobre Beautify
+      "dbaeumer.jshint"    // Si usas ESLint en lugar de JSHint
+    ]
+  }

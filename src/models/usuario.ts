@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 // import {
 //   Model
 // }  from'sequelize';
@@ -24,7 +24,6 @@
 //     public readonly createdAt!: Date;
 //     public readonly updatedAt!: Date;
 
-
 //     static associate(models: any) {
 //       // define association here
 //     }
@@ -46,50 +45,46 @@
 //   return Usuario;
 // };
 
-
-import { Model, DataTypes, Sequelize} from 'sequelize';
+import { Model, DataTypes, Sequelize } from 'sequelize'
 
 interface UserAttributes {
-  id?: number;
-  nombre: string;
-  email: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  id?: number
+  nombre:string
+  email: string
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 class Usuario extends Model<UserAttributes> implements UserAttributes {
-  public id!: number;
-  public nombre!: string;
-  public email!: string;
-  public readonly createdAt!: Date;
+  public id!: number
+  public nombre!: string
+  public email!: string
+  public readonly createdAt!: Date
   public readonly updatedAt!: Date
 
-
-  public static initialize(sequelize: Sequelize) {
-
+  public static initialize (sequelize: Sequelize) {
     Usuario.init(
       {
         id: {
           type: DataTypes.INTEGER,
           autoIncrement: true,
-          primaryKey: true,
+          primaryKey: true
         },
         nombre: {
           type: DataTypes.STRING,
-          allowNull: false,
+          allowNull: false
         },
         email: {
           type: DataTypes.STRING,
-          allowNull: false,
-        },
+          allowNull: false
+        }
       },
       {
         sequelize,
-        modelName: 'Usuario',
+        modelName: 'Usuario'
       }
-    );
-  
+    )
   }
 }
 
-export default Usuario;
+export default Usuario

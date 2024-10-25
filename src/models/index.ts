@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 // const fs = require('fs');
 // const path = require('path');
@@ -42,24 +42,25 @@
 
 // export default  db;
 
-import { Sequelize } from 'sequelize';
-import { readdirSync } from 'fs';
-import { basename as _basename, join } from 'path';
-const basename = _basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+import { Sequelize } from 'sequelize'
+// import { readdirSync } from 'fs'
+// import { basename as _basename, join } from 'path'
 
 // models
-import Usuario from './usuario';
+import Usuario from './usuario'
+// const basename = _basename(__filename)
+const env = process.env.NODE_ENV || 'development'
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const config = require(__dirname + '/../config/config.json')[env]
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const db: any = {}
 
-const db: any = {};
-
-let sequelize: Sequelize;
+let sequelize: Sequelize
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable] as string, config);
+  sequelize = new Sequelize(process.env[config.use_env_variable] as string, config)
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(config.database, config.username, config.password, config)
 }
 
 // readdirSync(__dirname)
@@ -75,35 +76,24 @@ if (config.use_env_variable) {
 //     db[model.name] = model;
 //   });
 
-
-
-
-
-
-
-
-//Cargar los modelos
+// Cargar los modelos
 db.Usuario = Usuario
-
-
 
 // Inicializar los modelos
 Object.keys(db).forEach(modelName => {
   if (db[modelName].initialize) {
-    db[modelName].initialize(sequelize);
+    db[modelName].initialize(sequelize)
   }
-});
+})
 
-//assciaciones
+// assciaciones
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
-    db[modelName].associate(db);    
+    db[modelName].associate(db)
   }
-});
+})
 
+db.sequelize = sequelize
+db.Sequelize = Sequelize
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-export default db;
-
+export default db
